@@ -1,38 +1,47 @@
 package com.delacrixmorgan.firecraft.extension
 
-import java.util.*
+import java.time.Instant
+import java.time.LocalDateTime
+import java.time.ZoneId
+import java.time.ZoneOffset
+import java.time.format.DateTimeFormatter
+import java.util.Calendar
+import java.util.Date
+import kotlin.math.roundToInt
 
-/**
- * Add and Remove days, hours or minutes in Date
- */
-fun Date.addDaysToDate(days: Int): Date {
-    val hoursInDay = 24
-    return this.addHoursToDate(days * hoursInDay)
+fun LocalDateTime.toDate(): Date = Date.from(
+    this.atZone(ZoneId.systemDefault())
+        .toInstant()
+)
+
+fun Date.toLocalDateTime(): LocalDateTime = LocalDateTime.ofInstant(
+    this.toInstant(),
+    ZoneOffset.UTC
+)
+
+fun String.toDate(): Date? {
+    val dateInstant = Instant.from(DateTimeFormatter.ISO_INSTANT.parse(this))
+    return Date.from(dateInstant)
 }
 
-fun Date.addHoursToDate(hours: Int): Date {
-    val minutesInHour = 60
-    return this.addMinutesToDate(hours * minutesInHour)
+fun Date.getDaysTo(to: Date = Date()): Int {
+    return ((to.time - this.time) / DateConstant.ONE_DAY_IN_MS.toDouble()).roundToInt()
 }
 
-fun Date.addMinutesToDate(minutes: Int): Date {
-    val millisecondsInMinute: Long = 60_000
-    val currentTimeInMilliseconds: Long = this.time
-    return Date(currentTimeInMilliseconds + minutes * millisecondsInMinute)
+fun Date.plusDays(days: Int): Date {
+    val calendar = Calendar.getInstance().apply {
+        time = this@plusDays
+    }
+
+    calendar.add(Calendar.DATE, days)
+    return calendar.time
 }
 
-fun Date.minusDaysToDate(days: Int): Date {
-    val hoursInDay = 24
-    return this.minusHoursToDate(days * hoursInDay)
-}
+fun Date.minusDays(days: Int): Date {
+    val calendar = Calendar.getInstance().apply {
+        time = this@minusDays
+    }
 
-fun Date.minusHoursToDate(hours: Int): Date {
-    val minutesInHour = 60
-    return this.minusMinutesToDate(hours * minutesInHour)
-}
-
-fun Date.minusMinutesToDate(minutes: Int): Date {
-    val millisecondsInMinute: Long = 60_000
-    val curTimeInMs: Long = this.time
-    return Date(curTimeInMs - minutes * millisecondsInMinute)
+    calendar.add(Calendar.DATE, -days)
+    return calendar.time
 }
