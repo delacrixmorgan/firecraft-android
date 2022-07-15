@@ -1,15 +1,17 @@
 package com.delacrixmorgan.firecraft
 
 import android.os.Bundle
-import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
+import androidx.fragment.app.commit
+import com.delacrixmorgan.firecraft.notification.NotificationFragment
 
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        val textView = findViewById<TextView>(R.id.textView)
-
+        supportFragmentManager.commit {
+            replace(android.R.id.content, NotificationFragment.create(), NotificationFragment::class.java.simpleName)
+        }
     }
 }

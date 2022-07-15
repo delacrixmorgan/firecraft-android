@@ -3,9 +3,11 @@ package com.delacrixmorgan.firecraft.date
 import com.delacrixmorgan.firecraft.extension.format
 import com.delacrixmorgan.firecraft.extension.getDaysBetween
 import com.delacrixmorgan.firecraft.extension.getDaysTo
+import com.delacrixmorgan.firecraft.extension.getRelativeTimeSpanString
 import com.delacrixmorgan.firecraft.extension.nextDayOfTheWeek
 import com.delacrixmorgan.firecraft.extension.toLocalDateTime
 import org.junit.Assert
+import org.junit.Ignore
 import org.junit.Test
 import java.time.DayOfWeek
 
@@ -122,6 +124,20 @@ class LocalDateTimeTest {
             "Should be DayOfWeek.SATURDAY",
             startDate?.nextDayOfTheWeek(DayOfWeek.SATURDAY)?.dayOfWeek,
             "2022-01-08T12:34:56Z".toLocalDateTime()?.dayOfWeek
+        )
+    }
+
+    @Ignore("DateUtils needs to be mocked")
+    @Test
+    fun `Given date and date 5 minutes before Then getRelativeTimeSpanString format should return 5 minutes ago`() {
+        val startDate = "2020-01-01T12:00:00Z".toLocalDateTime()
+        val nowDate = "2020-01-01T12:05:00Z".toLocalDateTime()
+        val expectedString = "5 minutes ago"
+
+        Assert.assertEquals(
+            "Should be $expectedString",
+            expectedString,
+            startDate?.getRelativeTimeSpanString(now = nowDate)
         )
     }
 }

@@ -1,5 +1,6 @@
 package com.delacrixmorgan.firecraft.extension
 
+import android.text.format.DateUtils
 import java.time.Instant
 import java.time.LocalDateTime
 import java.time.ZoneId
@@ -25,7 +26,7 @@ fun String.toDate(): Date? {
 }
 
 fun Date.getDaysTo(to: Date = Date()): Int {
-    return ((to.time - this.time) / DateConstant.ONE_DAY_IN_MS.toDouble()).roundToInt()
+    return ((to.time - this.time) / DateUtils.DAY_IN_MILLIS.toDouble()).roundToInt()
 }
 
 fun Date.plusDays(days: Int): Date {
