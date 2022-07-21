@@ -3,15 +3,13 @@ package com.delacrixmorgan.firecraft
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.commit
-import com.delacrixmorgan.firecraft.notification.NotificationFragment
+import com.delacrixmorgan.firecraft.compose.BooksFragment
 
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
-
         supportFragmentManager.commit {
-            replace(android.R.id.content, NotificationFragment.create(), NotificationFragment::class.java.simpleName)
+            replace(android.R.id.content, BooksFragment.create(), BooksFragment::class.java.simpleName)
         }
     }
 }
