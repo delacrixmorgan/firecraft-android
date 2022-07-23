@@ -12,7 +12,6 @@ import androidx.fragment.app.Fragment
 import com.delacrixmorgan.firecraft.R
 import com.delacrixmorgan.firecraft.databinding.FragmentScreenshotBinding
 
-
 class ScreenshotFragment : Fragment(R.layout.fragment_screenshot), ScreenshotBottomSheetFragment.Listener {
     companion object {
         fun create() = ScreenshotFragment()

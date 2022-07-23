@@ -11,6 +11,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.core.app.NotificationCompat
+import androidx.core.widget.addTextChangedListener
 import androidx.fragment.app.Fragment
 import com.delacrixmorgan.firecraft.MainActivity
 import com.delacrixmorgan.firecraft.R
@@ -27,6 +28,13 @@ class NotificationFragment : Fragment() {
 
     private val binding get() = requireNotNull(_binding)
     private var _binding: FragmentNotificationBinding? = null
+
+    private val message = NotificationMessage(
+        id = 1,
+        code = "1",
+        title = "Hello There",
+        message = "General Kenobi"
+    )
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -45,13 +53,14 @@ class NotificationFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         createNotificationChannels()
+
+        binding.titleEditText.setText(message.title)
+        binding.messageEditText.setText(message.message)
+
+        binding.titleEditText.addTextChangedListener { message.title = it?.toString() }
+        binding.messageEditText.addTextChangedListener { message.message = it?.toString() }
+
         binding.actionButton.setOnClickListener {
-            val message = NotificationMessage(
-                id = 1,
-                code = "1",
-                title = "Hello There",
-                message = "General Kenobi"
-            )
             pushNotification(message)
         }
     }
@@ -99,7 +108,7 @@ class NotificationFragment : Fragment() {
     data class NotificationMessage(
         val id: Int? = null,
         val code: String? = null,
-        val title: String? = null,
-        val message: String? = null
+        var title: String? = null,
+        var message: String? = null
     )
 }
