@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <item
+        android:id="@+id/homeScreenMenu"
+        android:title="Home screen"
+        app:showAsAction="ifRoom" />
+    <item
+        android:id="@+id/lockScreenMenu"
+        android:title="Lock screen"
+        app:showAsAction="ifRoom" />
+    <item
+        android:id="@+id/bothScreensMenu"
+        android:title="Home screen and lock screen"
+        app:showAsAction="ifRoom" />
+</menu>
