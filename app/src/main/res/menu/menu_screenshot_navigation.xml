@@ -3,14 +3,17 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
     <item
         android:id="@+id/homeScreenMenu"
+        android:icon="@drawable/ic_home"
         android:title="Home screen"
         app:showAsAction="ifRoom" />
     <item
         android:id="@+id/lockScreenMenu"
+        android:icon="@drawable/ic_lock"
         android:title="Lock screen"
         app:showAsAction="ifRoom" />
     <item
         android:id="@+id/bothScreensMenu"
+        android:icon="@drawable/ic_phone_android"
         android:title="Home screen and lock screen"
         app:showAsAction="ifRoom" />
 </menu>

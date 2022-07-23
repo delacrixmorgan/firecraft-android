@@ -11,6 +11,7 @@ import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
 import com.delacrixmorgan.firecraft.R
 import com.delacrixmorgan.firecraft.databinding.FragmentScreenshotBinding
+import com.google.android.material.snackbar.Snackbar
 
 class ScreenshotFragment : Fragment(R.layout.fragment_screenshot), ScreenshotBottomSheetFragment.Listener {
     companion object {
@@ -68,5 +69,6 @@ class ScreenshotFragment : Fragment(R.layout.fragment_screenshot), ScreenshotBot
 
     override fun onNavigationViewSelected(menuItems: ScreenshotBottomSheetFragment.MenuItems) {
         setAsWallpaper(menuItems)
+        Snackbar.make(binding.root, "Wallpaper changed!", Snackbar.LENGTH_SHORT).show()
     }
 }
