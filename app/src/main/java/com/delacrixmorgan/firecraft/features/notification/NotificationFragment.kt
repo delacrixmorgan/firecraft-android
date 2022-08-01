@@ -1,4 +1,4 @@
-package com.delacrixmorgan.firecraft.notification
+package com.delacrixmorgan.firecraft.features.notification
 
 import android.app.NotificationChannel
 import android.app.NotificationManager

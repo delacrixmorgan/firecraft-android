@@ -3,14 +3,15 @@ package com.delacrixmorgan.firecraft
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.commit
-import com.delacrixmorgan.firecraft.screenshot.ScreenshotFragment
+import com.delacrixmorgan.firecraft.features.Features
 
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        val fragment = ScreenshotFragment.create()
+
+        val feature = Features.HapticFeedback
         supportFragmentManager.commit {
-            replace(android.R.id.content, fragment, fragment::class.java.simpleName)
+            replace(android.R.id.content, feature.fragmentBuilder.invoke(), feature.featureName)
         }
     }
 }

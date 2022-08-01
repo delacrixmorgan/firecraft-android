@@ -1,4 +1,4 @@
-package com.delacrixmorgan.firecraft.screenshot
+package com.delacrixmorgan.firecraft.features.screenshot
 
 import android.os.Bundle
 import android.view.LayoutInflater
