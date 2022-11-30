@@ -9,7 +9,7 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        val feature = Features.HapticFeedback
+        val feature = Features.Locale
         supportFragmentManager.commit {
             replace(android.R.id.content, feature.fragmentBuilder.invoke(), feature.featureName)
         }
